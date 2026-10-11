@@ -1,0 +1,10 @@
+{
+  "name": "CareBridge - Smart Healthcare Assistance",
+  "description": "Comprehensive elderly healthcare platform with one-touch SOS, ambulance dispatch, vitals tracking, volunteer errands, video telehealth consultations, insurance claims, and remote family portal.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

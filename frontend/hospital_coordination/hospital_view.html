@@ -1,0 +1,16 @@
+<div class="hospital-panel">
+  <h2>Hospital & Ambulance Coordination</h2>
+  <p class="desc">Live telemetry for ambulance dispatch, hospital ER bed status, and digital pre-admission.</p>
+  <div id="hospitalsList" style="margin-top:20px;">
+    <!-- Populated by script -->
+  </div>
+  <div style="margin-top:24px;">
+    <button onclick="requestAmbulance()" style="padding:12px 24px; background:#dc2626; color:#fff; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">
+      Dispatch Nearest Ambulance
+    </button>
+  </div>
+  <div id="dispatchCard" style="display:none; margin-top:20px; padding:16px; border:1px solid #3b82f6; border-radius:8px; background:rgba(59,130,246,0.1);">
+    <h3>Ambulance Dispatched</h3>
+    <p id="dispatchInfo"></p>
+  </div>
+</div>

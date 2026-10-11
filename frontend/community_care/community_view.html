@@ -1,0 +1,22 @@
+<div class="community-panel">
+  <h2>Community Care & Volunteer Errands</h2>
+  <p class="desc">Neighborhood volunteer matching for medicine delivery, grocery runs, and daily safety check-ins.</p>
+  
+  <div style="background:#1e293b; padding:16px; border-radius:8px; margin:20px 0;">
+    <h3>Request an Errand</h3>
+    <form id="errandForm" onsubmit="submitErrand(event)" style="display:flex; flex-direction:column; gap:10px; max-width:400px;">
+      <select id="errandCategory" style="padding:8px; border-radius:4px; background:#0f172a; color:#fff; border:1px solid #334155;">
+        <option>Prescription Pickup</option>
+        <option>Grocery Delivery</option>
+        <option>Doctor Escort</option>
+        <option>Companionship Check-in</option>
+      </select>
+      <input type="text" id="errandTitle" placeholder="Title (e.g. Walgreens pick up)" required style="padding:8px; border-radius:4px; background:#0f172a; color:#fff; border:1px solid #334155;">
+      <input type="text" id="errandDesc" placeholder="Description & instructions" required style="padding:8px; border-radius:4px; background:#0f172a; color:#fff; border:1px solid #334155;">
+      <button type="submit" style="padding:10px; background:#2563eb; color:#fff; border:none; border-radius:4px; cursor:pointer;">Request Volunteer</button>
+    </form>
+  </div>
+
+  <h3>Active & Recent Requests</h3>
+  <div id="errandList"></div>
+</div>

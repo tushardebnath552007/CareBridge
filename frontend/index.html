@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareBridge - Healthcare Assistance Platform</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="carebridge-layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>CareBridge</h2>
+        <span class="subtext">Elderly & Family Care</span>
+      </div>
+      <nav class="nav-menu">
+        <button class="nav-item active" onclick="loadTab('sos_emergency')">🚨 SOS & Emergency</button>
+        <button class="nav-item" onclick="loadTab('hospital_coordination')">🏥 Hospital & Ambulance</button>
+        <button class="nav-item" onclick="loadTab('health_monitoring')">💓 Health Monitoring</button>
+        <button class="nav-item" onclick="loadTab('community_care')">🤝 Community Care</button>
+        <button class="nav-item" onclick="loadTab('user_management')">👤 User & Profile</button>
+        <button class="nav-item" onclick="loadTab('telehealth_consultations')">📹 Telehealth Consults</button>
+        <button class="nav-item" onclick="loadTab('insurance_claims')">🛡️ Insurance & Claims</button>
+        <button class="nav-item" onclick="loadTab('family_dashboard')">👨‍👩‍👧 Family Dashboard</button>
+      </nav>
+      <div class="elder-mode-toggle">
+        <label><input type="checkbox" id="elderToggle" onchange="toggleElderMode()"> High-Contrast Senior Mode</label>
+      </div>
+    </aside>
+    <main class="content-area" id="mainContent">
+      <div id="tabContainer">
+        <!-- Dynamic view loaded here -->
+      </div>
+    </main>
+  </div>
+  <script>
+    const TAB_MAP = {
+      sos_emergency: { view: 'sos_emergency/sos_view.html', script: 'sos_emergency/sos_script.js' },
+      hospital_coordination: { view: 'hospital_coordination/hospital_view.html', script: 'hospital_coordination/hospital_script.js' },
+      health_monitoring: { view: 'health_monitoring/health_view.html', script: 'health_monitoring/health_script.js' },
+      community_care: { view: 'community_care/community_view.html', script: 'community_care/community_script.js' },
+      user_management: { view: 'user_management/profile_view.html', script: 'user_management/profile_script.js' },
+      telehealth_consultations: { view: 'telehealth_consultations/telehealth_view.html', script: 'telehealth_consultations/telehealth_script.js' },
+      insurance_claims: { view: 'insurance_claims/insurance_view.html', script: 'insurance_claims/insurance_script.js' },
+      family_dashboard: { view: 'family_dashboard/family_view.html', script: 'family_dashboard/family_script.js' }
+    };
+    function loadTab(tab, el) {
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+      else if (event && event.target) event.target.classList.add('active');
+      const mapped = TAB_MAP[tab];
+      if (!mapped) {
+        document.getElementById('tabContainer').innerHTML = `<h3>Tab ${tab} Loaded</h3>`;
+        return;
+      }
+      fetch(mapped.view)
+        .then(res => {
+          if (!res.ok) throw new Error(res.statusText);
+          return res.text();
+        })
+        .then(html => {
+          document.getElementById('tabContainer').innerHTML = html;
+          document.querySelectorAll('script[data-tab-script]').forEach(s => s.remove());
+          const s = document.createElement('script');
+          s.src = mapped.script;
+          s.dataset.tabScript = tab;
+          document.body.appendChild(s);
+        })
+        .catch(() => {
+          document.getElementById('tabContainer').innerHTML = `<h3>Tab ${tab} Loaded</h3>`;
+        });
+    }
+    function toggleElderMode() {
+      const enabled = document.body.classList.toggle('elder-mode');
+      // Senior Accessibility ON -> Dark Mode ON (linked behavior)
+      document.body.classList.toggle('dark-mode', enabled);
+      document.documentElement.classList.toggle('dark', enabled);
+      const t = document.getElementById('elderToggle');
+      if (t) t.checked = enabled;
+    }
+    window.onload = () => loadTab('sos_emergency');
+  </script>
+</body>
+</html>

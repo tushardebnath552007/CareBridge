@@ -1,0 +1,16 @@
+<div class="sos-panel">
+  <h2>One-Touch SOS Emergency Trigger</h2>
+  <p class="desc">Press the emergency button to immediately alert family contacts and dispatch local EMS.</p>
+  <div style="text-align: center; margin: 40px 0;">
+    <button id="sosBtn" class="sos-trigger-btn" onclick="triggerSOS()">SOS<br><span style="font-size:12px;font-weight:400;">EMERGENCY</span></button>
+  </div>
+  <div id="sosStatusCard" style="display:none; padding:16px; border:1px solid #dc2626; border-radius:8px; background:rgba(220,38,38,0.1);">
+    <h3 id="incidentStatusText">🚨 Emergency Active</h3>
+    <p id="incidentDetails"></p>
+    <button onclick="resolveSOS()" style="padding:8px 16px; background:#16a34a; color:#fff; border:none; border-radius:6px; cursor:pointer;">Mark Resolved (False Alarm)</button>
+  </div>
+  <div class="location-box" style="margin-top:24px;">
+    <h4>Live GPS Location</h4>
+    <p id="gpsCoords">Acquiring device coordinates...</p>
+  </div>
+</div>
