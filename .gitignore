@@ -10,3 +10,5 @@ coverage/
 *.db
 backend/carebridge.db
 carebridge.sqlite
+
+__pycache__/
