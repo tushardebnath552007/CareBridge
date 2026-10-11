@@ -8,9 +8,8 @@ import {
   Video,
   ShieldCheck,
   LayoutDashboard,
-  Code2,
-  Eye,
-  Moon
+  Code2, 
+  Eye
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -138,35 +137,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <p className="text-[11px] text-slate-600 mt-1 font-medium">
             {isSeniorMode ? 'High contrast & enlarged text active' : 'Standard caregiver layout'}
           </p>
-          {/* Dark Mode follows Senior Accessibility: ON -> dark ON */}
-          <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-200">
-            <div className="flex items-center gap-2">
-              <Moon className="w-4 h-4 text-slate-700" />
-              <span className="text-xs font-bold text-slate-950">
-                Dark Mode
-              </span>
-            </div>
-            <button
-              onClick={onToggleDarkMode}
-              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer ${
-                isDarkMode ? 'bg-slate-900' : 'bg-slate-300'
-              }`}
-              role="switch"
-              aria-checked={isDarkMode}
-              title="Toggle Dark Mode (auto-enabled with Senior Accessibility)"
-            >
-              <span
-                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                  isDarkMode ? 'translate-x-6' : 'translate-x-1'
-                }`}
-              />
-            </button>
-          </div>
-          {isSeniorMode && !isDarkMode && (
-            <p className="text-[11px] text-amber-700 mt-1 font-semibold">
-              Senior mode normally enables dark mode
-            </p>
-          )}
         </div>
       </div>
 
